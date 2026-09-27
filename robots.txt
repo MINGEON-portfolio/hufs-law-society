@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hufslawsociety.github.io/sitemap.xml
