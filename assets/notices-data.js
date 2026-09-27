@@ -1,4 +1,9 @@
 // 공지사항 데이터. Obsidian Vault의 "공지사항" 폴더에서 draft:false 게시글을 가져와 채웁니다.
+//
+// ▶ 새 학기 모집공고를 올리려면?
+//   위쪽(NOTICES 배열 맨 앞)에 아래 블록을 통째로 복사해서 새 항목을 추가한다.
+//   id만 겹치지 않게 새로 짓고, tag/title/date/images/bodyHtml을 이번 학기 내용으로 바꾼다.
+//   이미지는 assets/notices/ 폴더에 넣고 경로를 images 배열에 적으면 됨.
 const NOTICES = [
   {
     id: 'recruit-13th-2',

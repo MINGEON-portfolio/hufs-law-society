@@ -125,9 +125,9 @@
           <a href="#about" class="btn btn-ghost">더 알아보기</a>
         </div>
         <div class="hero-stats">
-          <div><b>13기</b><span>2026-2 활동 기수</span></div>
-          <div><b>12</b><span>정기 프로그램</span></div>
-          <div><b>5</b><span>운영 팀</span></div>
+          <div><b data-cfg="generation">13기</b><span><span data-cfg="semester">2026-2</span> 활동 기수</span></div>
+          <div><b data-cfg="programCount">12</b><span>정기 프로그램</span></div>
+          <div><b data-cfg="teamCount">5</b><span>운영 팀</span></div>
         </div>
       </div>
 
@@ -177,9 +177,9 @@
         <div class="side-card">
           <div class="eyebrow">At a glance</div>
           <div class="fact-row">
-            <div><b>13기</b><span>2026-2</span></div>
-            <div><b>12</b><span>정기 프로그램</span></div>
-            <div><b>5</b><span>운영 팀</span></div>
+            <div><b data-cfg="generation">13기</b><span data-cfg="semester">2026-2</span></div>
+            <div><b data-cfg="programCount">12</b><span>정기 프로그램</span></div>
+            <div><b data-cfg="teamCount">5</b><span>운영 팀</span></div>
           </div>
         </div>
       </div>
@@ -219,6 +219,9 @@
       <h2>연혁</h2>
       <p>학회 창립부터 현재까지의 발자취입니다. 창립 연도와 주요 연혁을 채워주세요.</p>
     </div>
+    <!-- 새 학기가 되면: 아래 마지막 t-item을 복사해 새 학기 내용으로 바꿔 추가하고,
+         "active" 클래스는 새로 추가한(가장 최근) t-item으로 옮긴다.
+         (여기 있는 연도/기수는 지난 학기 기록이라 site-config.js로 자동 반영하지 않음) -->
     <div class="timeline">
       <div class="t-item"><div class="t-dot"></div>
         <div class="t-year">20XX<span class="placeholder-tag tag-dark">창립 연도 입력 필요</span></div>
@@ -240,10 +243,11 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Organization</div>
-      <h2>13기 임원진</h2>
+      <h2><span data-cfg="generation">13기</span> 임원진</h2>
       <p>매 학회 종강 총회에서 학회원의 추천과 투표로 학회장·부학회장을 선발하며,
         회칙 제9조에 따라 임원진 임기는 한 학기로 제한됩니다.</p>
     </div>
+    <!-- 새 학기가 되면: 아래 3장의 이름/학과와 <b> 안의 글자(회장/부회장/운영)를 직접 바꾼다. -->
     <div class="org-lead-grid">
       <div class="lead-card"><div class="lead-avatar">회장</div><b>임수민</b><span>정치외교학과</span>
         <span class="lead-role">President</span></div>
@@ -272,7 +276,7 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Activities</div>
-      <span class="gen-badge">[13기] <b>2026-2</b> 학기 활동</span>
+      <span class="gen-badge">[<span data-cfg="generation">13기</span>] <b data-cfg="semester">2026-2</b> 학기 활동</span>
       <h2>이번 학기 활동</h2>
       <p>카드를 누르면 활동 소개와 진행 방식, 자료 발췌본을 볼 수 있습니다.</p>
     </div>
@@ -313,6 +317,7 @@
     </div>
     <div class="contact-grid">
       <div>
+        <!-- 학회장이 바뀌면: 아래 전화번호(현재 대표 연락처)를 새 학회장 번호로 바꾼다. -->
         <ul class="info-list">
           <li><div class="info-ico">☎</div><div><b>연락처</b><span>학회 대표 연락처를 입력해주세요 <span class="placeholder-tag">입력 필요</span></span></div></li>
           <li><div class="info-ico">◈</div><div><b>네이버 카페</b><a href="https://m.cafe.naver.com/ca-fe/hufslawsociety" target="_blank" rel="noopener">m.cafe.naver.com/ca-fe/hufslawsociety</a></div></li>
@@ -342,6 +347,7 @@
   </div>
 </footer>
 
+<script src="assets/site-config.js"></script>
 <script src="assets/gallery-data.js"></script>
 <script src="assets/notices-data.js"></script>
 <script src="script.js"></script>

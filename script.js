@@ -1,4 +1,16 @@
 // ============================================================
+// 사이트 설정값 적용 (SITE_CONFIG -> [data-cfg] 요소들)
+// assets/site-config.js의 값 하나만 바꾸면 페이지 곳곳에 자동 반영됨
+// ============================================================
+(function () {
+  if (typeof SITE_CONFIG === 'undefined') return;
+  document.querySelectorAll('[data-cfg]').forEach(function (el) {
+    var key = el.getAttribute('data-cfg');
+    if (SITE_CONFIG[key] !== undefined) el.textContent = SITE_CONFIG[key];
+  });
+})();
+
+// ============================================================
 // 활동 카드 생성 (ACTIVITIES -> #act-grid)
 // ============================================================
 (function () {
@@ -205,15 +217,17 @@
   Array.prototype.forEach.call(cards, function (card) {
     var numEl = card.querySelector('.act-num');
     if (!numEl) return;
-    var list = ACT_PHOTOS[numEl.textContent.trim()];
-    if (!list || !list.length) return;
+    var list = (ACT_PHOTOS[numEl.textContent.trim()] || []).filter(function (photoId) {
+      return !!findGalleryPhoto(photoId);
+    });
+    if (!list.length) return;
 
     var ph = card.querySelector('.act-photo');
     ph.innerHTML = '';
     ph.classList.add('has-img');
 
-    var shots = list.map(function (idx, k) {
-      var it = GALLERY[idx];
+    var shots = list.map(function (photoId, k) {
+      var it = findGalleryPhoto(photoId);
       var w = document.createElement('div');
       w.className = 'act-shot' + (k === 0 ? ' on' : '');
       var b = document.createElement('div');
@@ -289,14 +303,16 @@
       mdPanel = back.querySelector('.md');
 
   function showShot(idx) {
-    var it = GALLERY[idx];
+    var it = findGalleryPhoto(idx);
+    if (!it) return;
     mdImg.src = it.src; mdImg.alt = it.caption;
     mdBlur.style.backgroundImage = 'url("' + it.src + '")';
     mdCap.textContent = it.caption;
   }
 
   function open(num, title, desc) {
-    var d = ACT_DETAIL[num] || {}, shots = ACT_PHOTOS[num] || [];
+    var d = ACT_DETAIL[num] || {};
+    var shots = (ACT_PHOTOS[num] || []).filter(function (photoId) { return !!findGalleryPhoto(photoId); });
     mdNum.textContent = num;
     mdTitle.textContent = title;
     mdEn.textContent = d.en || '';
@@ -316,7 +332,7 @@
           var t = document.createElement('button');
           t.type = 'button';
           t.className = 'md-thumb' + (k === 0 ? ' on' : '');
-          t.innerHTML = '<img src="' + GALLERY[idx].src + '" alt="">';
+          t.innerHTML = '<img src="' + findGalleryPhoto(idx).src + '" alt="">';
           t.addEventListener('click', function () {
             showShot(idx);
             mdThumbs.querySelectorAll('.md-thumb').forEach(function (x) { x.classList.remove('on'); });

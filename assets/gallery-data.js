@@ -1,34 +1,47 @@
-// 외대법학회 활동/갤러리 데이터. 원본 시안(hufs-law-society.html)의
-// HERO_IMGS / activities / PHOTO / DETAIL 객체를 그대로 옮긴 것입니다.
+// 외대법학회 활동/갤러리 데이터.
+//
+// ▶ 새 학기 사진을 추가하려면?
+//   1. 사진 파일을 assets/gallery/ 폴더에 넣는다 (파일명 자유).
+//   2. 아래 GALLERY 배열 맨 밑에 새 줄을 추가한다. id는 알아보기 쉬운 이름으로
+//      직접 짓는다 (예: "seminar-13-0310"). 다른 항목과 겹치지만 않으면 됨.
+//   3. 그 사진을 활동 카드에 연결하려면, 아래 ACT_PHOTOS에서 해당 활동 번호의
+//      배열에 방금 지은 id를 문자열로 추가한다. (숫자를 세거나 순서를 신경 쓸 필요 없음)
 
 const GALLERY = [
-  { src: "assets/gallery/00.jpg", caption: "12기 자율세미나 · 2026.05.12" },
-  { src: "assets/gallery/01.jpg", caption: "12기 형법 기초 세미나 · 2026.05.07" },
-  { src: "assets/gallery/02.jpg", caption: "12기 리트 모의고사 · 2026.04.28" },
-  { src: "assets/gallery/03.jpg", caption: "12기 법조인 초청 강연 · 2026.04.03" },
-  { src: "assets/gallery/04.jpg", caption: "제3회 연합 법률경연대회 · 2026.03.31" },
-  { src: "assets/gallery/05.jpg", caption: "12기 로스쿨생 초청 세미나 · 2026.03.17" },
-  { src: "assets/gallery/06.jpg", caption: "외대법학회 12기 MT · 2026.03.13-14" },
-  { src: "assets/gallery/07.jpg", caption: "외대법학회 12기 개강총회 · 2026.02.24" },
-  { src: "assets/gallery/08.jpg", caption: "11기 법조인 초청 강연 · 2025.11.04" },
-  { src: "assets/gallery/09.jpg", caption: "금융 법조인의 세계 : 증권사 사내변호사의 역할" },
-  { src: "assets/gallery/10.jpg", caption: "제2회 연합 법률경연대회 · 2025.09.30" },
-  { src: "assets/gallery/11.jpg", caption: "11기 로스쿨생 초청 세미나 · 2025.09.16" },
-  { src: "assets/gallery/12.jpg", caption: "외대법학회 11기 MT · 2025.09.12-13" },
-  { src: "assets/gallery/13.jpg", caption: "10기 법조인 초청 강연 · 2025.05.13" },
-  { src: "assets/gallery/14.jpg", caption: "제1회 연합 법률경연대회 · 2025.04.01" },
-  { src: "assets/gallery/15.jpg", caption: "학회장배 리트 모의고사 · 2025.03.18" },
-  { src: "assets/gallery/16.jpg", caption: "로스쿨 인사이더 : 법무법인 대표가 밝히는 합격의 조건" },
-  { src: "assets/gallery/17.jpg", caption: "법조인의 세계 : 검사 이야기" },
-  { src: "assets/gallery/18.jpg", caption: "9기 법조인 초청 강연 · 고려진 검사" },
-  { src: "assets/gallery/19.jpg", caption: "외대법학회 10기 MT · 2025.02.21-24" },
-  { src: "assets/gallery/20.jpg", caption: "외대법학회 10기 개강총회 · 2025.02.18" },
-  { src: "assets/gallery/21.jpg", caption: "법원견학 · 서울북부지방법원" },
-  { src: "assets/gallery/22.jpg", caption: "법원견학 · 서울북부지방법원 청사" },
-  { src: "assets/gallery/23.jpg", caption: "법원견학 · 서울북부지방법원 방문" },
+  { id: "seminar-12-0512", src: "assets/gallery/00.jpg", caption: "12기 자율세미나 · 2026.05.12" },
+  { id: "criminal-law-12-0507", src: "assets/gallery/01.jpg", caption: "12기 형법 기초 세미나 · 2026.05.07" },
+  { id: "leet-mock-12-0428", src: "assets/gallery/02.jpg", caption: "12기 리트 모의고사 · 2026.04.28" },
+  { id: "guest-lecture-12-0403", src: "assets/gallery/03.jpg", caption: "12기 법조인 초청 강연 · 2026.04.03" },
+  { id: "competition-3rd", src: "assets/gallery/04.jpg", caption: "제3회 연합 법률경연대회 · 2026.03.31" },
+  { id: "lawschool-seminar-12-0317", src: "assets/gallery/05.jpg", caption: "12기 로스쿨생 초청 세미나 · 2026.03.17" },
+  { id: "mt-12", src: "assets/gallery/06.jpg", caption: "외대법학회 12기 MT · 2026.03.13-14" },
+  { id: "orientation-12", src: "assets/gallery/07.jpg", caption: "외대법학회 12기 개강총회 · 2026.02.24" },
+  { id: "guest-lecture-11-1104", src: "assets/gallery/08.jpg", caption: "11기 법조인 초청 강연 · 2025.11.04" },
+  { id: "guest-lecture-securities-lawyer", src: "assets/gallery/09.jpg", caption: "금융 법조인의 세계 : 증권사 사내변호사의 역할" },
+  { id: "competition-2nd", src: "assets/gallery/10.jpg", caption: "제2회 연합 법률경연대회 · 2025.09.30" },
+  { id: "lawschool-seminar-11", src: "assets/gallery/11.jpg", caption: "11기 로스쿨생 초청 세미나 · 2025.09.16" },
+  { id: "mt-11", src: "assets/gallery/12.jpg", caption: "외대법학회 11기 MT · 2025.09.12-13" },
+  { id: "guest-lecture-10-0513", src: "assets/gallery/13.jpg", caption: "10기 법조인 초청 강연 · 2025.05.13" },
+  { id: "competition-1st", src: "assets/gallery/14.jpg", caption: "제1회 연합 법률경연대회 · 2025.04.01" },
+  { id: "leet-mock-president-cup", src: "assets/gallery/15.jpg", caption: "학회장배 리트 모의고사 · 2025.03.18" },
+  { id: "guest-lecture-lawfirm-ceo", src: "assets/gallery/16.jpg", caption: "로스쿨 인사이더 : 법무법인 대표가 밝히는 합격의 조건" },
+  { id: "guest-lecture-prosecutor-1", src: "assets/gallery/17.jpg", caption: "법조인의 세계 : 검사 이야기" },
+  { id: "guest-lecture-prosecutor-9", src: "assets/gallery/18.jpg", caption: "9기 법조인 초청 강연 · 고려진 검사" },
+  { id: "mt-10", src: "assets/gallery/19.jpg", caption: "외대법학회 10기 MT · 2025.02.21-24" },
+  { id: "orientation-10", src: "assets/gallery/20.jpg", caption: "외대법학회 10기 개강총회 · 2025.02.18" },
+  { id: "court-visit-1", src: "assets/gallery/21.jpg", caption: "법원견학 · 서울북부지방법원" },
+  { id: "court-visit-2", src: "assets/gallery/22.jpg", caption: "법원견학 · 서울북부지방법원 청사" },
+  { id: "court-visit-3", src: "assets/gallery/23.jpg", caption: "법원견학 · 서울북부지방법원 방문" },
 ];
 
-// [번호, 제목, 설명]
+// id로 GALLERY 항목을 찾는 도우미. 존재하지 않는 id를 적으면 콘솔에 경고가 뜬다.
+function findGalleryPhoto(id) {
+  var found = GALLERY.filter(function (g) { return g.id === id; })[0];
+  if (!found) console.warn('gallery-data.js: id "' + id + '" 에 해당하는 사진이 GALLERY에 없습니다.');
+  return found;
+}
+
+// [활동 번호, 제목, 설명] — 학기마다 프로그램이 바뀌면 이 배열을 직접 수정한다.
 const ACTIVITIES = [
     ["01","공지사항","학회 소식과 학기 일정을 공유하는 채널입니다."],
     ["02","시험 정보 공유","전공 시험 범위와 기출 자료를 함께 모아 공유합니다."],
@@ -44,11 +57,18 @@ const ACTIVITIES = [
     ["12","MT","학기 초 회원들이 함께 떠나는 친목 MT입니다."]
   ];
 
-// 활동 번호 -> GALLERY 인덱스 (사진이 없는 03, 11은 의도적으로 비어 있음 = "사진 준비 중")
+// 활동 번호 -> GALLERY id 목록 (사진이 없는 03, 11은 의도적으로 비어 있음 = "사진 준비 중")
 const ACT_PHOTOS = {
-    '01':[7,20,16], '02':[2,15], '04':[4,10], '05':[14],
-    '06':[3,8,13,9,17,18], '07':[5,11], '08':[0], '09':[21,22,23],
-    '10':[1], '12':[6,12,19]
+    '01':['orientation-12','orientation-10','guest-lecture-lawfirm-ceo'],
+    '02':['leet-mock-12-0428','leet-mock-president-cup'],
+    '04':['competition-3rd','competition-2nd'],
+    '05':['competition-1st'],
+    '06':['guest-lecture-12-0403','guest-lecture-11-1104','guest-lecture-10-0513','guest-lecture-securities-lawyer','guest-lecture-prosecutor-1','guest-lecture-prosecutor-9'],
+    '07':['lawschool-seminar-12-0317','lawschool-seminar-11'],
+    '08':['seminar-12-0512'],
+    '09':['court-visit-1','court-visit-2','court-visit-3'],
+    '10':['criminal-law-12-0507'],
+    '12':['mt-12','mt-11','mt-10']
   };
 
 // 활동 번호 -> 모달 상세 내용
