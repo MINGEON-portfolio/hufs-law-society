@@ -23,85 +23,6 @@
 })();
 
 // ============================================================
-// 3D 엠블럼 (model-viewer, 정적 GLB 파일)
-// ============================================================
-(function () {
-  var slots = Array.prototype.slice.call(document.querySelectorAll('.logo3d'));
-  if (!slots.length) return;
-  function fail() { document.body.classList.add('no3d'); }
-
-  function mount(urls) {
-    var wide = window.matchMedia('(min-width: 1000px)').matches;
-    slots.forEach(function (slot) {
-      var key = slot.getAttribute('data-model');
-      if (!urls[key]) return;
-      var mv = document.createElement('model-viewer');
-      mv.setAttribute('src', urls[key]);
-      var fb0 = slot.querySelector('.fallback');
-      mv.setAttribute('alt', fb0 ? fb0.alt : '외대법학회 엠블럼');
-      mv.setAttribute('auto-rotate', '');
-      mv.setAttribute('auto-rotate-delay', '0');
-      mv.setAttribute('rotation-per-second', slot.getAttribute('data-speed') || '22deg');
-      mv.setAttribute('environment-image', 'neutral');
-      mv.setAttribute('exposure', slot.getAttribute('data-exposure') || '1.15');
-      mv.setAttribute('shadow-intensity', '0');
-      mv.setAttribute('interaction-prompt', 'none');
-      mv.setAttribute('disable-tap', '');
-      mv.setAttribute('field-of-view', '26deg');
-      mv.setAttribute('camera-orbit', slot.getAttribute('data-orbit') || '0deg 84deg 104%');
-      if (slot.getAttribute('data-tilt') === 'free') {
-        mv.setAttribute('min-camera-orbit', 'auto 58deg auto');
-        mv.setAttribute('max-camera-orbit', 'auto 92deg auto');
-        mv.setAttribute('field-of-view', '32deg');
-      } else {
-        var phi = (slot.getAttribute('data-orbit') || '0deg 84deg 104%').split(' ')[1];
-        mv.setAttribute('min-camera-orbit', 'auto ' + phi + ' auto');
-        mv.setAttribute('max-camera-orbit', 'auto ' + phi + ' auto');
-      }
-      mv.setAttribute('loading', 'eager');
-      if (wide && slot.closest('.hero-building')) {
-        mv.setAttribute('camera-controls', '');
-        mv.setAttribute('disable-zoom', '');
-        mv.setAttribute('disable-pan', '');
-      }
-      var body = slot.getAttribute('data-body');
-      var relief = slot.getAttribute('data-relief');
-      if (body || relief) {
-        mv.addEventListener('load', function () {
-          try {
-            var ms = mv.model.materials;
-            if (body && ms[0]) {
-              ms[0].pbrMetallicRoughness.setBaseColorFactor(body);
-              ms[0].pbrMetallicRoughness.setMetallicFactor(1.0);
-              ms[0].pbrMetallicRoughness.setRoughnessFactor(0.48);
-            }
-            if (relief && ms[1]) {
-              ms[1].pbrMetallicRoughness.setBaseColorFactor(relief);
-              ms[1].pbrMetallicRoughness.setMetallicFactor(0.88);
-              ms[1].pbrMetallicRoughness.setRoughnessFactor(0.34);
-            }
-          } catch (e) {}
-        });
-      }
-      slot.appendChild(mv);
-    });
-  }
-
-  function start() {
-    mount({ law: 'assets/emblem.glb' });
-  }
-
-  if (customElements.get('model-viewer')) start();
-  else {
-    var w = 0, t = setInterval(function () {
-      w += 300;
-      if (customElements.get('model-viewer')) { clearInterval(t); start(); }
-      else if (w > 12000) { clearInterval(t); fail(); }
-    }, 300);
-  }
-})();
-
-// ============================================================
 // 히어로 갤러리 (3D 코버플로우 캐러셀)
 // ============================================================
 (function () {
@@ -198,13 +119,6 @@
   });
 
   layout();
-})();
-
-// 3D 로드 실패 시 히어로 엠블럼도 헤더와 같은 이미지로 대체
-(function () {
-  var head = document.querySelector('.brand-img'),
-      heroFb = document.querySelector('.hero-emblem .fallback');
-  if (head && heroFb && !heroFb.getAttribute('src')) heroFb.src = head.src;
 })();
 
 // ============================================================
