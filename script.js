@@ -303,7 +303,7 @@
 
     var more = document.createElement('div');
     more.className = 'act-more';
-    more.innerHTML = '자세히 보기 <i>&rarr;</i>';
+    more.innerHTML = '자세히 보기 <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></i>';
     card.querySelector('.act-body').appendChild(more);
 
     card.setAttribute('tabindex', '0');
