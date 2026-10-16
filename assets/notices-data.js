@@ -6,6 +6,48 @@
 //   이미지는 assets/notices/ 폴더에 넣고 경로를 images 배열에 적으면 됨.
 const NOTICES = [
   {
+    id: 'guest-lecture-13th-1',
+    tag: '강연',
+    important: false,
+    title: '법조인 초청 강연 〈법조인의 세계〉 (10.27 화 오후 7시)',
+    date: '2026.10.16',
+    en: 'Guest Lecture',
+    images: [
+      'assets/notices/guest-lecture-13th-1.jpg'
+    ],
+    bodyHtml: `
+      <p class="notice-lead">⚖️ 외대법학회 13기 2026 하반기 법조인 초청 강연, 〈법조인의 세계〉가 열립니다! (10.27 화 오후 7시)</p>
+      <p>판단할 판(判)의 판사가 바라보고, 변론할 변(辯)의 변호사가 체험하는 법조인의 세계를 박재영 변호사님께 직접 듣는 시간입니다.</p>
+
+      <h4>⚖️ 강연 안내</h4>
+      <ul>
+        <li>일시 : 2026년 10월 27일 (화) 오후 7시</li>
+        <li>장소 : 한국외대 서울캠퍼스 오바마홀 국제회의실</li>
+        <li>대상 : 재학생 및 휴학생</li>
+      </ul>
+
+      <h4>⚖️ 강연자 : 박재영 변호사</h4>
+      <ul>
+        <li>현) 법무법인 율성 변호사</li>
+        <li>현) 서울교육청 인사위원</li>
+        <li>전) 부산지방법원 판사</li>
+        <li>전) 의정부지방법원 판사</li>
+        <li>전) 서울중앙지방법원 판사</li>
+        <li>전) 서울특별시 의회 자문변호사</li>
+      </ul>
+
+      <h4>⚖️ 참가 신청</h4>
+      <p>구글 폼 링크로 신청서 제출 (포스터의 QR코드로도 신청할 수 있습니다)<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSddY0OMB3jr3WXJLLRyXPEwqThROx4D0MywVQEiyjlqXeNAkg/viewform" target="_blank" rel="noopener">강연 신청서 바로가기</a></p>
+
+      <h4>⚖️ 문의</h4>
+      <ul>
+        <li>인스타그램 : @hufs_law</li>
+        <li>학회장 전화번호 : 010-3693-4744 임수민</li>
+      </ul>
+    `
+  },
+  {
     id: 'recruit-13th-2',
     tag: '모집',
     important: false,

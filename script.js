@@ -424,7 +424,8 @@
     var imgs = (n.images || []).map(function (src) {
       return '<img src="' + src + '" alt="' + n.title + '" loading="lazy">';
     }).join('');
-    ntBody.innerHTML = n.bodyHtml + (imgs ? '<div class="notice-images">' + imgs + '</div>' : '');
+    var single = (n.images || []).length === 1;
+    ntBody.innerHTML = n.bodyHtml + (imgs ? '<div class="notice-images' + (single ? ' single' : '') + '">' + imgs + '</div>' : '');
 
     back.classList.add('on');
     document.body.classList.add('md-open');

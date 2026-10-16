@@ -386,6 +386,8 @@ body.md-open{overflow:hidden;}
 .notice-body strong{color:var(--accent-text);}
 .notice-images{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 0;}
 .notice-images img{width:100%;border-radius:10px;border:1px solid var(--line);aspect-ratio:1/1;object-fit:cover;}
+.notice-images.single{grid-template-columns:1fr;}
+.notice-images.single img{max-width:520px;margin:0 auto;aspect-ratio:auto;object-fit:contain;}
 @media (max-width:560px){ .notice-images{grid-template-columns:1fr;} }
 .recruit-card{background:var(--navy);color:#fff;border-radius:20px;padding:32px 28px;
   display:flex;flex-direction:column;justify-content:space-between;}
